@@ -25,18 +25,15 @@ bool MyFramework::Init()
 {
 	try
 	{
-		//////////////////Створення вікна//////////////////////////////
+		
 		PreInit(width, height, fullscreen);
 		sf::Vector2u windowSize(width, height);
 		
-		//////////////////Створення плеєра//////////////////////////////
+		
 		sf::Texture tShip;
 		tShip.loadFromFile(SPACESHIP_PATH);
 		std::shared_ptr<Player> prePlayer(new Player(tShip));
 		p = prePlayer;
-		
-		////////////////////////////////////////////////////
-		//////////////////настройка астероїда//////////////////////////////
 		AsterManager.init(5);
 		AsterManager.start(*p);
 		return true;
@@ -98,14 +95,14 @@ MyFramework::~MyFramework()
 bool MyFramework::Tick() 
 { 
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH,WINDOW_HIGH), "Game");
-	sf::Texture backgroundTexture;// Не можу пояснити але факт, якщо присвоїти тектуру тут то фон відобразиться, інакше ні.
+	sf::Texture backgroundTexture;
 		backgroundTexture.loadFromFile(BACKGROUND_PATH);
 		const sf::Texture* p_background = &backgroundTexture;
-		background.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HIGH)); //З ініту Не малюэться тоді фон, я пробував
+		background.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HIGH));
 		background.setTexture(p_background);
 		window.draw(background);
 
-		sf::Texture tShip;// ну і шляхом чергового костиля була вирішена проблема
+		sf::Texture tShip;
 		tShip.loadFromFile(SPACESHIP_PATH);
 		p->sprite.setTexture(tShip);
 
@@ -121,18 +118,18 @@ bool MyFramework::Tick()
 			sf::Event event;
 			while (window.pollEvent(event))
 			{
-				if (event.type == sf::Event::Closed)//+
+				if (event.type == sf::Event::Closed)
 				{
 					window.close();
 					return true;
 				}
 			}
 			
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))//+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 			{
 				onKeyPressed(FRKey::LEFT);
 			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))//+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 			{
 				onKeyPressed(FRKey::RIGHT);
 			}

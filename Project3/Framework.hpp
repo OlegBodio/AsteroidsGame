@@ -8,13 +8,9 @@
 #include <string>
 #include <vector>
 #include <cmath>
-//#include "Player.hpp"
-//#include "Asteroid.hpp"
-//#include "Collider.hpp"
-//#include "Bullet.hpp"
 #include "Constants.hpp"
 
-// Bonus for any found bugs in the framework!
+
 
 class Sprite;
 
@@ -27,7 +23,7 @@ FRAMEWORK_API void drawTestBackground();
 
 FRAMEWORK_API void getScreenSize(int& w, int &h);
 
-// Get the number of milliseconds since library initialization.
+
 FRAMEWORK_API unsigned int getTickCount();
 
 FRAMEWORK_API void showCursor(bool bShow);
